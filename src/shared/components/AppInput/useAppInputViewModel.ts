@@ -55,16 +55,22 @@ export const useAppInputViewModel = ({
     return colors['gray-200'];
   };
 
+  const handleChangeText = (text: string) => {
+    if (mask) {
+      onChangeText?.(mask(text) || '');
+    } else {
+      onChangeText?.(text);
+    }
+  };
+
   return {
     showPassword,
-    setShowPassword,
-    isFocused,
-    setIsFocused,
-    inputRef,
     handlePasswordToggle,
     handleWrapperPress,
     handleFocus,
     handleBlur,
     getIconColor,
+    handleChangeText,
+    isFocused,
   };
 };
