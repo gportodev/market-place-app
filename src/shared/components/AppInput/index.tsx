@@ -84,12 +84,18 @@ export const AppInput: FC<AppInputProps> = ({
           className={styles.input()}
           onChangeText={handleChangeText}
           value={value}
+          secureTextEntry={showPassword}
           {...textInputProps}
         />
 
-        <TouchableOpacity>
-          <Ionicons name="eye-off-outline" size={22} />
-        </TouchableOpacity>
+        {secureTextEntry && (
+          <TouchableOpacity activeOpacity={0.7} onPress={handlePasswordToggle}>
+            <Ionicons
+              name={showPassword ? 'eye-outline' : 'eye-off-outline'}
+              size={22}
+            />
+          </TouchableOpacity>
+        )}
       </Pressable>
       {error && (
         <Text className={styles.error()}>
